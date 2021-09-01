@@ -31,6 +31,9 @@ else
   exit -1
 fi
 
+# 转换为utf-8编码 brew install enca
+enca -x utf-8 ${TEMP_DIR}/${TARGET}/*.htm*
+
 popd
 
 NEW_MD5=$(
@@ -52,14 +55,12 @@ if [[ "${OLD_MD5}" == "${NEW_MD5}" ]]; then
   echo "无变化"
 else
   echo "有更新"
-  cp -r ${TEMP_DIR}/${TARGET}/* ${WK_DIR}/${TARGET}
   git fetch
   git clean -df
 
-  git checkout master -df
+  git checkout master -f
+  cp -r ${TEMP_DIR}/${TARGET}/* ${WK_DIR}/${TARGET}
   git add -A
   git commit -m "镜像成功:${TIME}"
   git push
 fi
-
-
