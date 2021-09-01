@@ -52,6 +52,14 @@ if [[ "${OLD_MD5}" == "${NEW_MD5}" ]]; then
   echo "无变化"
 else
   echo "有更新"
+  cp -r ${TEMP_DIR}/${TARGET}/* ${WK_DIR}/${TARGET}
+  git fetch
+  git clean -df
+
+  git checkout master -df
+  git add -A
+  git commit -m "镜像成功:${TIME}"
+  git push
 fi
 
-cp -r ${TEMP_DIR}/${TARGET}/* ${WK_DIR}/${TARGET}
+
