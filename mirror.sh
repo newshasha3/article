@@ -34,7 +34,7 @@ fi
 # 转换为utf-8编码 brew install enca
 enca -L zh_CN -x utf-8 ${TEMP_DIR}/${TARGET}/*.htm*
 # 替换 <meta charset=gb2312> 为 <meta charset=utf-8>
-sed -i "" "s/charset=gb2312/charset=utf-8/g" ./temp/newshasha3.com/*.htm*
+sed -i "" "s/charset=gb2312/charset=utf-8/g" ${TEMP_DIR}/${TARGET}/*.htm*
 
 popd
 
