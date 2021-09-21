@@ -3,6 +3,9 @@
 # 镜像静态网站
 #
 
+git fetch
+git checkout master -f
+
 WK_DIR=$(
   cd $(dirname $0)
   pwd
