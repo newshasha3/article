@@ -22,7 +22,7 @@ if [[ -d "${TEMP_DIR}" ]]; then
 fi
 mkdir -p "${TEMP_DIR}"
 
-pushd ${TEMP_DIR}
+pushd ${TEMP_DIR} >/dev/null
 
 wget -c -m -k -np -p -E -U Mozilla --no-check-certificate $BASE_SITE
 RET=$?
@@ -39,7 +39,7 @@ enca -L zh_CN -x utf-8 ${TEMP_DIR}/${TARGET}/*.htm*
 # 替换 <meta charset=gb2312> 为 <meta charset=utf-8>
 sed -i "" "s/charset=gb2312/charset=utf-8/g" ${TEMP_DIR}/${TARGET}/*.htm*
 
-popd
+popd >/dev/null
 
 NEW_MD5=$(
   cd ${TEMP_DIR}/${TARGET}
@@ -68,4 +68,5 @@ else
   git add -A
   git commit -m "镜像成功:${TIME}"
   git push
+  exit 1
 fi
