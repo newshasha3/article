@@ -31,7 +31,7 @@ if [[ "$RET" == "0" ]]; then
   echo "镜像成功:${TIME}"
 else
   echo "镜像失败:$RET"
-  exit -1
+  exit $RET
 fi
 
 # 转换为utf-8编码 brew install enca
