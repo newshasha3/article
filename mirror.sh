@@ -46,8 +46,11 @@ sed -i "" "s/<table width=\"1000\"/<table/g" ${TEMP_DIR}/${TARGET}/*.htm*
 sed -i "" "s/<img/<img style=\"width: 100%;\"/g" ${TEMP_DIR}/${TARGET}/*.htm*
 # 注入js
 sed -i "" "s/<\/html>/<script src=\"plumber.js\"><\/script><\/html>/g" ${TEMP_DIR}/${TARGET}/*.htm*
+# 注入样式
+sed -i "" "s/<\/html>/<link rel=\"stylesheet\" type=\"text\/css\" href=\"style\.css\"><\/html>/g" ${TEMP_DIR}/${TARGET}/*.htm*
 
 cp -r ${WK_DIR}/plumber.js ${TEMP_DIR}/${TARGET}/plumber.js
+cp -r ${WK_DIR}/style.css ${TEMP_DIR}/${TARGET}/style.css
 
 popd >/dev/null
 
