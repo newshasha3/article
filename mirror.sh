@@ -38,6 +38,16 @@ fi
 enca -L zh_CN -x utf-8 ${TEMP_DIR}/${TARGET}/*.htm*
 # 替换 <meta charset=gb2312> 为 <meta charset=utf-8>
 sed -i "" "s/charset=gb2312/charset=utf-8/g" ${TEMP_DIR}/${TARGET}/*.htm*
+# 修改 viewport 适配移动端
+sed -i "" "s/<meta/<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no\"><meta/g" ${TEMP_DIR}/${TARGET}/*.htm*
+# 取消table固定宽
+sed -i "" "s/<table width=\"1000\"/<table/g" ${TEMP_DIR}/${TARGET}/*.htm*
+# 图片适配
+sed -i "" "s/<img/<img style=\"width: 100%;\"/g" ${TEMP_DIR}/${TARGET}/*.htm*
+# 注入js
+sed -i "" "s/<\/html>/<script src=\"plumber.js\"><\/script><\/html>/g" ${TEMP_DIR}/${TARGET}/*.htm*
+
+cp -r ${WK_DIR}/plumber.js ${TEMP_DIR}/${TARGET}/plumber.js
 
 popd >/dev/null
 
