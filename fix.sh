@@ -8,11 +8,7 @@ WK_DIR=$(
   pwd
 )
 
-TEMP_DIR=${WK_DIR}/temp
-TARGET_DIR=${TEMP_DIR}/tester
-rm -rf ${TARGET_DIR}
-
-cp -r ${TEMP_DIR}/newshasha3.com ${TARGET_DIR}
+TARGET_DIR=${WK_DIR}/newshasha3.com
 cp ${WK_DIR}/plumber.js ${TARGET_DIR}
 
 # 修改 viewport 适配移动端
