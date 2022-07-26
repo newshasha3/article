@@ -77,6 +77,7 @@ else
   git clean -df
 
   git checkout master -f
+  git pull
   cp -r ${TEMP_DIR}/${TARGET}/* ${WK_DIR}/${TARGET}
   git add -A
   git commit -m "镜像成功:${TIME}"
