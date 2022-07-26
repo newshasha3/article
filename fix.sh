@@ -26,3 +26,6 @@ sed -i "" "s/<\/html>/<script src="plumber.js"><\/script><\/html>/g" ${TARGET_DI
 
 # 注入样式
 sed -i "" "s/<\/html>/<link rel=\"stylesheet\" type=\"text\/css\" href=\"style\.css\"><\/html>/g" ${TARGET_DIR}/*.htm*
+
+# 评论
+# sed -i "" "s/<\/html>/<div\ id=\"lv-container\"\ data-id=\"city\"\ data-uid=\"MTAyMC81Njg5Ni8zMzM2MA==\">	<script\ type=\"text\/javascript\">\ (function(d,\ s)\ {\ var\ j,\ e\ =\ d.getElementsByTagName(s)[0];\ if\ (typeof\ LivereTower\ ===\ \'function\')\ {\ return;\ }\ j\ =\ d.createElement(s);\ j.src\ =\ \'https:\/\/cdn-city.livere.com\/js\/embed.dist.js\';\ j.async\ =\ true;\ e.parentNode.insertBefore(j,\ e);\ })(document,\ \'script\');	<\/script><noscript>^_^<\/noscript><\/div><\/html>/g" ${TARGET_DIR}/*.htm*
