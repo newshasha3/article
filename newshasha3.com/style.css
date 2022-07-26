@@ -1,0 +1,22 @@
+/* a .style8
+{
+  color: aqua !important;
+} */
+
+a:link {
+  text-decoration: none !important;
+  color: #996633 !important;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #996633;
+}
+
+.current {
+  color: #000000 !important;
+}
+
+p {
+  word-wrap: break-word;
+}
