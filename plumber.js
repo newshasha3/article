@@ -1,45 +1,60 @@
-// 去除img标签的固定宽高
-var imgs = document.getElementsByTagName('img')
-for (var index = 0; index < imgs.length; index++) {
-  var img = imgs[index]
-  img.removeAttribute('width')
-  img.removeAttribute('height')
+// 
+window.onload = function() {
+
+  fixHtml()
+  addReamrk()
 }
 
-// 指向当前页面的 a 标签显示为黑色
-var as = document.getElementsByTagName('a')
-for (var index = 0; index < as.length; index++) {
-  var a = as[index]
-  var clazz = a.getAttribute('class')
-  var href = a.getAttribute('href')
-  var ps = location.href.split('/')
-  ps.splice(-1)
-  ps.push(href)
-  var p = ps.join('/')
-  if (p == location.href) {
-    a.setAttribute('class', clazz + ' ' + 'current')
+function fixHtml() {
+  // 去除img标签的固定宽高
+  var imgs = document.getElementsByTagName('img')
+  for (var index = 0; index < imgs.length; index++) {
+    var img = imgs[index]
+    img.removeAttribute('width')
+    img.removeAttribute('height')
+  }
+
+  // 指向当前页面的 a 标签显示为黑色
+  var as = document.getElementsByTagName('a')
+  for (var index = 0; index < as.length; index++) {
+    var a = as[index]
+    var clazz = a.getAttribute('class')
+    var href = a.getAttribute('href')
+    var ps = location.href.split('/')
+    ps.splice(-1)
+    ps.push(href)
+    var p = ps.join('/')
+    if (p == location.href) {
+      a.setAttribute('class', clazz + ' ' + 'current')
+    }
   }
 }
 
-// var comment = "<div\ id=\"lv-container\"\ data-id=\"city\"\ data-uid=\"MTAyMC81Njg5Ni8zMzM2MA==\">	<script\ type=\"text\/javascript\">\ (function(d,\ s)\ {\ var\ j,\ e\ =\ d.getElementsByTagName(s)[0];\ if\ (typeof\ LivereTower\ ===\ \'function\')\ {\ return;\ }\ j\ =\ d.createElement(s);\ j.src\ =\ \'https:\/\/cdn-city.livere.com\/js\/embed.dist.js\';\ j.async\ =\ true;\ e.parentNode.insertBefore(j,\ e);\ })(document,\ \'script\');	<\/script><noscript>^_^<\/noscript><\/div>"
+function addReamrk() {
 
-/**
- <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC81Njg5Ni8zMzM2MA==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
+  var segments = location.href.split("/")
+  var filename = segments.splice(-1)
+  var originhost = segments.splice(-1)
+  if (!filename || filename.length === 0 || filename === 'index.html'){
+    filename = 'index.htm'
+  }
 
-       if (typeof LivereTower === 'function') { return; }
+  var container = document.getElementsByTagName('body');
 
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
+  var scriptNode = document.createElement("script")
+  scriptNode.src = "https://remark.feiwen.me/js/cusdis.es.js"
+  var scriptNodei18n = document.createElement("script")
+  scriptNodei18n.src = "https://cusdis.com/js/widget/lang/zh-cn.js"
 
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript>^_^</noscript>
-</div>
-<!-- City版安装代码已完成 -->
- */
+  var remarkNode = document.createElement("div")
+  remarkNode.setAttribute("id", "cusdis_thread")
+  remarkNode.setAttribute("data-host", "https://remark.feiwen.me")
+  remarkNode.setAttribute("data-app-id", "eaca9665-2401-41c3-9179-69ad71885fb1")
+  remarkNode.setAttribute("data-page-id", originhost + '/' + filename)
+  remarkNode.setAttribute("data-page-url", location.href)
+  remarkNode.setAttribute("data-page-title", document.title)
+
+  container[0].appendChild(remarkNode)
+  container[0].appendChild(scriptNodei18n)
+  container[0].appendChild(scriptNode)
+}
