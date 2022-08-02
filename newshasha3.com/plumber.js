@@ -45,7 +45,11 @@ function addReamrk() {
   scriptNode.src = "https://remark.feiwen.me/js/cusdis.es.js"
   var scriptNodei18n = document.createElement("script")
   scriptNodei18n.src = "https://cusdis.com/js/widget/lang/zh-cn.js"
-
+  scriptNodei18n.async = true
+  scriptNode.async = true
+  scriptNodei18n.defer = true
+  scriptNode.defer = true
+  
   var remarkNode = document.createElement("div")
   remarkNode.setAttribute("id", "cusdis_thread")
   remarkNode.setAttribute("data-host", "https://remark.feiwen.me")
