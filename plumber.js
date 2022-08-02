@@ -44,7 +44,7 @@ function addReamrk() {
   var scriptNode = document.createElement("script")
   scriptNode.src = "https://remark.feiwen.me/js/cusdis.es.js"
   var scriptNodei18n = document.createElement("script")
-  scriptNodei18n.src = "https://cusdis.com/js/widget/lang/zh-cn.js"
+  scriptNodei18n.src = "https://remark.feiwen.me/js/widget/lang/zh-cn.js"
   scriptNodei18n.async = true
   scriptNode.async = true
   scriptNodei18n.defer = true
