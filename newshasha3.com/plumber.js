@@ -33,8 +33,8 @@ function fixHtml() {
 function addReamrk() {
 
   var segments = location.href.split("/")
-  var filename = segments.splice(-1)
-  var originhost = segments.splice(-1)
+  var filename = segments.splice(-1).pop()
+  var originhost = segments.splice(-1).pop()
   if (!filename || filename.length === 0 || filename === 'index.html'){
     filename = 'index.htm'
   }
