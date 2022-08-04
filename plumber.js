@@ -2,7 +2,7 @@
 window.onload = function() {
 
   fixHtml()
-  addReamrk()
+  //addReamrk()
 }
 
 function fixHtml() {
