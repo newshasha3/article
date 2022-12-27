@@ -3,13 +3,16 @@
 # 镜像静态网站
 #
 
-git fetch
-git checkout master -f
-
 WK_DIR=$(
   cd $(dirname $0)
   pwd
+
 )
+
+pushd ${WK_DIR} >/dev/null
+
+git fetch
+git checkout master -f
 
 TEMP_DIR=${WK_DIR}/temp
 
@@ -86,3 +89,5 @@ else
   git push
   exit 1
 fi
+
+popd >/dev/null
