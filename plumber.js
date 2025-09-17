@@ -2,7 +2,7 @@
 window.onload = function() {
 
   fixHtml()
-  //addReamrk()
+  addReamrk()
 }
 
 function fixHtml() {
@@ -35,30 +35,27 @@ function addReamrk() {
   var segments = location.href.split("/")
   var filename = segments.splice(-1).pop()
   var originhost = segments.splice(-1).pop()
-  if (!filename || filename.length === 0 || filename === 'index.html'){
+  if (!filename || filename.length === 0 || filename === 'index.html') {
     filename = 'index.htm'
   }
+  var issueTerm = `${originhost}/${filename}`
 
-  var container = document.getElementsByTagName('body');
+  var container = document.getElementsByTagName('body')
 
   var scriptNode = document.createElement("script")
-  scriptNode.src = "https://remark.feiwen.me/js/cusdis.es.js"
-  var scriptNodei18n = document.createElement("script")
-  scriptNodei18n.src = "https://remark.feiwen.me/js/widget/lang/zh-cn.js"
-  scriptNodei18n.async = true
+  scriptNode.src = "https://utteranc.es/client.js"
   scriptNode.async = true
-  scriptNodei18n.defer = true
-  scriptNode.defer = true
-  
+  scriptNode.setAttribute("repo", "newshasha3/article")
+  scriptNode.setAttribute("issue-term", issueTerm)
+  scriptNode.setAttribute("theme", "github-light")
+  scriptNode.setAttribute("crossorigin", "anonymous")
+  scriptNode.setAttribute("async", "true")
+
   var remarkNode = document.createElement("div")
-  remarkNode.setAttribute("id", "cusdis_thread")
-  remarkNode.setAttribute("data-host", "https://remark.feiwen.me")
-  remarkNode.setAttribute("data-app-id", "eaca9665-2401-41c3-9179-69ad71885fb1")
-  remarkNode.setAttribute("data-page-id", originhost + '/' + filename)
-  remarkNode.setAttribute("data-page-url", location.href)
-  remarkNode.setAttribute("data-page-title", document.title)
+  remarkNode.setAttribute("page-id", issueTerm)
+  remarkNode.setAttribute("page-url", location.href)
+  remarkNode.setAttribute("page-title", document.title)
 
   container[0].appendChild(remarkNode)
-  container[0].appendChild(scriptNodei18n)
   container[0].appendChild(scriptNode)
 }
