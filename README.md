@@ -5,4 +5,15 @@
 
 # 镜像
 
-## [新沙沙故事会](https://mmueeee.github.io/feiwen/newshasha3.com/)
+## [新沙沙故事会](https://newshasha3.github.io/article/newshasha3.com/)
+
+
+```
+<script src="https://utteranc.es/client.js"
+        repo="newshasha3/article"
+        issue-term="[ENTER TERM HERE]"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+```
